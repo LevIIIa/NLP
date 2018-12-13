@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
