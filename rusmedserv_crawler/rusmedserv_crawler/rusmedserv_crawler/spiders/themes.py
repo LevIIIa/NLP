@@ -29,8 +29,10 @@ class ThemesSpider(scrapy.Spider):
 
     def parse(self, response):
         html = response.body.decode('windows-1251')
+        # удаляем amp; для корректной работы регулярки
+        html = html.replace('amp;', '')
         matches = re.findall(
-            r'href=\"([a-zA-Z0-9_\?\.=]+?)\"\sid=\"(thread_title_\d+)\".*?>(.+?)</a>',
+            r'href=\"([a-zA-Z0-9_\?\.=&]+?)\"\sid=\"(thread_title_\d+)\".*?>(.+?)</a>',
             html,
             flags=re.S
         )
